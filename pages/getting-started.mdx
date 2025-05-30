@@ -1,0 +1,54 @@
+# Getting Started
+
+## Install
+
+Recommend using `pnpm` for installation.
+
+```sh npm2yarn copy
+npm i heurist
+```
+
+## Authentication
+
+The Heurist API uses API keys for authentication. 
+
+Remember that your API key is a secret! Do not share it with others or expose it in any client-side code (browsers, apps). Production requests must be routed through your own backend server where your API key can be securely loaded from an environment variable or key management service.
+
+## Usage
+
+```ts
+import Heurist from 'heurist'
+
+const heurist = new Heurist({
+  apiKey: process.env['HEURIST_API_KEY'], // This is the default and can be omitted
+})
+
+async function generateImage() {
+  const response = await heurist.images.generate({
+    model: 'BrainDance',
+    prompt: '1girl',
+    // below are optional
+    neg_prompt: 'worst quality',
+    num_iterations: 25,
+    guidance_scale: 7.5,
+    width: 1024,
+    height: 768,
+    seed: -1
+  })
+
+  // response
+  // {
+  //   "url": "https://heurist-images.s3.us-east-1.amazonaws.com/**********.png"
+  //   ...
+  // }
+}
+
+## Example Applications
+
+Heurist team has built 3 applications using Heurist's LLM and Image Generation APIs. You can find their source code here. Forks are welcomed!
+
+- 🎨 Imagine: https://github.com/heurist-network/imagine
+
+- 🧠 Pondera: https://github.com/heurist-network/pondera
+
+- 🔍 Heurist Search: Frontend https://github.com/heurist-network/gpt-search-web Backend https://github.com/heurist-network/search_with_lepton 
