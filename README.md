@@ -1,10 +1,10 @@
-# Heurist TypeScript API Library
+# XaloraTypeScript API Library
 
-[![NPM version](https://img.shields.io/npm/v/heurist.svg)](https://npmjs.org/package/heurist)
+[![NPM version](https://img.shields.io/npm/v/Xalora.svg)](https://npmjs.org/package/Xalora)
 
-This library provides convenient access to the Heurist REST API from TypeScript or JavaScript.
+This library provides convenient access to the XaloraREST API from TypeScript or JavaScript.
 
-The full API documentation can be found in [docs](https://sdk.heurist.ai/).
+The full API documentation can be found in [docs](https://sdk.Xalora.ai/).
 
 ## Requirements
 
@@ -18,24 +18,24 @@ The following runtimes are supported:
 ## Installation
 
 ```sh
-pnpm add heurist
+pnpm add Xalora
 ```
 
 ## Get an API Key
 
-Submit this form: https://dev-api-form.heurist.ai/ with a valid email and description of your use case.
+Submit this form: https://dev-api-form.Xalora.ai/ with a valid email and description of your use case.
 
 ## Usage
 
 ```ts
-import Heurist from 'heurist'
+import Xalorafrom 'Xalora'
 
-const heurist = new Heurist({
-  apiKey: process.env['HEURIST_API_KEY'], // This is the default and can be omitted
+const Xalora= new Xalora({
+  apiKey: process.env['Xalora_API_KEY'], // This is the default and can be omitted
 })
 
 async function generateImage() {
-  const response = await heurist.images.generate({
+  const response = await Xalora.images.generate({
     model: 'BrainDance',
     prompt: '1girl',
     // below are optional
@@ -49,7 +49,7 @@ async function generateImage() {
 
   // response
   // {
-  //   "url": "https://heurist-images.s3.us-east-1.amazonaws.com/**********.png"
+  //   "url": "https://Xalora-images.s3.us-east-1.amazonaws.com/**********.png"
   //   ...
   // }
 }
@@ -61,7 +61,7 @@ async function generateImage() {
         timeout_seconds: 300 // optional
     });
 
-    const response = await heurist.workflow.executeWorkflowAndWaitForResult(upscalerTask);
+    const response = await Xalora.workflow.executeWorkflowAndWaitForResult(upscalerTask);
   }
 
   // response
@@ -80,9 +80,9 @@ SmartGen provides a high-level interface for generating images with enhanced pro
 
 ### Basic Example
 ```ts
-import Heurist from 'heurist'
+import Xalorafrom 'heurist'
 
-const heurist = new Heurist({
+const Xalora= new Heurist({
   apiKey: process.env['HEURIST_API_KEY']
 })
 
@@ -131,7 +131,7 @@ SmartGen accepts the following key parameters:
 You can split the generation process into two steps:
 ```ts
 // Step 1: Get image generation parameters
-const params = await heurist.smartgen.generateImage({
+const params = await Xalora.smartgen.generateImage({
   description: "A cyberpunk cityscape",
   image_model: "FLUX.1-dev",
   stylization_level: 4,
@@ -143,7 +143,7 @@ const params = await heurist.smartgen.generateImage({
 console.log(params.parameters.prompt)
 
 // Step 2: Call `images.generate` API to generate with the same or modified parameters
-const imageResult = await heurist.images.generate({
+const imageResult = await Xalora.images.generate({
   ...params.parameters
   // You may change some fields
 })
@@ -167,7 +167,7 @@ const imageResult = await heurist.images.generate({
 ### One-Step Generation
 You can create an image with a simple description in one step:
 ```ts
-const result = await heurist.smartgen.generateImage({
+const result = await Xalora.smartgen.generateImage({
   description: "A cyberpunk cityscape",
   image_model: "FLUX.1-dev",
   stylization_level: 4,
